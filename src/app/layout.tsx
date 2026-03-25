@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import 'antd/dist/reset.css';
 import './globals.css';
 import { SiteShell } from '@/components/layout/SiteShell';
+import { Providers } from '@/components/common/Providers';
 
 export const metadata: Metadata = {
   title: 'Benny Lebelo | Software Engineer | .NET, Next.js, Cloud, AI',
@@ -23,7 +25,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <SiteShell>{children}</SiteShell>
+        <Providers>
+          <SiteShell>{children}</SiteShell>
+        </Providers>
       </body>
     </html>
   );

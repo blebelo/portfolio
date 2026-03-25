@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons';
 
 const navItems = [
   ['/', 'Home'],
@@ -25,6 +26,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
             <a href="/Benny-Lebelo-CV.pdf">Resume</a>
+            <a href="https://github.com/blebelo" aria-label="GitHub">
+              <GithubOutlined />
+            </a>
+            <a href="https://linkedin.com/in/blebelo" aria-label="LinkedIn">
+              <LinkedinOutlined />
+            </a>
           </nav>
         </div>
       </header>
