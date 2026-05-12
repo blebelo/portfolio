@@ -1,3 +1,5 @@
+'use client';
+
 import { projects } from '@/data/projects';
 import { Button, Card, Col, Divider, Row, Space, Tag, Typography } from 'antd';
 

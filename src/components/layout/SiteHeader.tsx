@@ -2,31 +2,67 @@
 
 import { GithubOutlined, LinkedinOutlined } from '@ant-design/icons';
 import { Button, Layout, Menu, Space, Typography } from 'antd';
+import type { Route } from 'next';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const items = [
-  'Home',
-  'About',
-  'Experience',
-  'Projects',
-  'Education',
-  'Skills',
-  'Contact',
-  'Chat'
-].map((label) => ({ key: label.toLowerCase(), label: <Link href={label === 'Home' ? '/' : `/${label.toLowerCase()}`}>{label}</Link> }));
+const navItems: { key: string; label: string; href: Route }[] = [
+  { key: 'home', label: 'Home', href: '/' },
+  { key: 'about', label: 'About', href: '/about' },
+  { key: 'experience', label: 'Experience', href: '/experience' },
+  { key: 'projects', label: 'Projects', href: '/projects' },
+  { key: 'education', label: 'Education', href: '/education' },
+  { key: 'skills', label: 'Skills', href: '/skills' },
+  { key: 'contact', label: 'Contact', href: '/contact' },
+  { key: 'chat', label: 'Chat', href: '/chat' }
+];
+
+const items = navItems.map(({ key, label, href }) => ({ key, label: <Link href={href}>{label}</Link> }));
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const activeSegment = pathname.split('/').filter(Boolean)[0];
+  const selectedKey =
+    activeSegment == null
+      ? 'home'
+      : navItems.find((item) => item.href === (`/${activeSegment}` as Route))?.key ?? 'home';
+
   return (
-    <Layout.Header style={{ position: 'sticky', top: 0, zIndex: 50, background: '#000', borderBottom: '1px solid #1f1f1f' }}>
-      <div style={{ width: 'min(1200px, 95vw)', margin: '0 auto', display: 'flex', alignItems: 'center', gap: 20 }}>
-        <Typography.Text strong style={{ color: '#fff', minWidth: 180 }}>
-          Benny Lebelo
-        </Typography.Text>
-        <Menu mode="horizontal" theme="dark" style={{ flex: 1, background: 'transparent', borderBottom: 'none' }} items={items} />
-        <Space>
-          <Button href="/resume.pdf" target="_blank">Resume</Button>
-          <Button type="text" icon={<GithubOutlined />} href="https://github.com/bennylebelo" target="_blank" aria-label="GitHub" />
-          <Button type="text" icon={<LinkedinOutlined />} href="https://www.linkedin.com/in/bennylebelo" target="_blank" aria-label="LinkedIn" />
+    <Layout.Header className="site-header">
+      <div className="site-header-inner">
+        <Link href="/" className="brand-link" aria-label="Benny Lebelo home">
+          <Typography.Text strong className="brand-name">
+            Benny Lebelo
+          </Typography.Text>
+          <Typography.Text className="brand-role">Software Engineer</Typography.Text>
+        </Link>
+        <Menu
+          mode="horizontal"
+          theme="dark"
+          className="site-nav"
+          selectedKeys={[selectedKey]}
+          items={items}
+        />
+        <Space className="site-header-actions" size={10}>
+          <Button href="/resume.pdf" target="_blank" className="header-resume">
+            Resume
+          </Button>
+          <Button
+            type="text"
+            icon={<GithubOutlined />}
+            href="https://github.com/bennylebelo"
+            target="_blank"
+            aria-label="GitHub"
+            className="header-icon-btn"
+          />
+          <Button
+            type="text"
+            icon={<LinkedinOutlined />}
+            href="https://www.linkedin.com/in/bennylebelo"
+            target="_blank"
+            aria-label="LinkedIn"
+            className="header-icon-btn"
+          />
         </Space>
       </div>
     </Layout.Header>

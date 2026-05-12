@@ -4,7 +4,7 @@ export const experiences: ExperienceItem[] = [
   {
     id: 'boxfusion',
     company: 'Boxfusion',
-    role: 'Graduate Software Engineer / Software Engineer',
+    role: 'Software Engineer',
     period: 'Recent',
     description:
       'Contributed to client-facing software delivery across backend, workflow automation, integration, and production support work.',
@@ -19,8 +19,8 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: 'marketing',
-    company: 'Independent / Client Work',
-    role: 'Social Media Marketing & Customer-Facing Work',
+    company: 'Speed Media',
+    role: 'Marketing & Customer-Facing Work',
     period: '2+ years',
     description:
       'Built communication, client acquisition, and user-centered thinking through customer-facing delivery.',
@@ -42,6 +42,6 @@ export const experiences: ExperienceItem[] = [
       'Handled client acquisition and relationship management.',
       'Built execution discipline, ownership, and service quality consistency.'
     ],
-    technologies: ['Operations', 'Customer Success', 'Process Ownership']
+    technologies: ['Operations', 'Customer Success', 'Process Ownership', 'Product Readiness', ' ']
   }
 ];

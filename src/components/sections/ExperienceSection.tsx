@@ -1,3 +1,5 @@
+'use client';
+
 import { experiences } from '@/data/experience';
 import { Card, Space, Tag, Timeline, Typography } from 'antd';
 

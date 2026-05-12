@@ -1,3 +1,5 @@
+'use client';
+
 import { education } from '@/data/education';
 import { Card, Typography } from 'antd';
 

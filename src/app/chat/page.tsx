@@ -1,3 +1,4 @@
+'use client'
 import { ChatPanel } from '@/components/chatbot/ChatPanel';
 import { Typography } from 'antd';
 
